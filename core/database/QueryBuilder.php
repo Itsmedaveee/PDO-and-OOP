@@ -72,16 +72,11 @@ class QueryBuilder
         $statement->rowCount();
 	}
 	public function login($username,$password)
-	{
-		/*$statement = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
-		$statement->execute(['username' => $username]);
-		$statement->fetch(PDO::FETCH_OBJ);*/
-
+	{	
 		try {
 			$statement = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
 			$statement->execute(['username' => $username]);
 			$row = $statement->fetch(PDO::FETCH_ASSOC);
-
 	         if($statement->rowCount() > 0) {
 	          	if(password_verify($password, $row['password'])) {
 	          		$_SESSION['user_id'] = $row['id'];

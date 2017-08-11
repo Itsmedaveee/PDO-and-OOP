@@ -5,6 +5,18 @@ use App\Core\App;
 
 class LoginController
 {
+	public function admin()
+	{
+	  // User Registration page
+		$new_password = password_hash('123456', PASSWORD_DEFAULT);
+		App::get('database')->insert('users',[
+			'name'     => 'Dave',                 
+			'username' => 'admin',
+			'password' => $new_password,
+			'usertype' => 'Admin'
+		]);
+	}
+
 	public function index()
 	{
 	  return view('login.index');
@@ -13,15 +25,6 @@ class LoginController
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
-		// User Registration page
-		// $new_password = password_hash($password, PASSWORD_DEFAULT);
-		/*App::get('database')->insert('users',[
-			'name'     => 'Test',                 
-			'username' => $_POST['username'],
-			'password' => $new_password,
-			'usertype' => 'Admin'
-		]);*/
 
 		App::get('database')->login($username,$password);
 

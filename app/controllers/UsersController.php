@@ -50,11 +50,13 @@ public function update($id)
 {
   
   $allowed = ["name", "username", "password", "usertype"];
+
+  $hash_password = password_hash($_POST ['password'], PASSWORD_DEFAULT);
+  
   $updated = App::get('database')->update('users', [
-          
            'name' => $_POST ['name'],
            'username' => $_POST ['username'],
-           'password' => $_POST ['password'],
+           'password' => $hash_password,
            'usertype' => $_POST ['usertype'],
   ],$allowed,$id);
    Flash::message('success', 'User Successfuly updated.');
