@@ -28,7 +28,7 @@
     $router->patch('student/{id}','StudentsController@update');
     $router->delete('student/{id}','StudentsController@destroy');
 
-    $router->get('login','LoginController@index');
+    $router->get('logins','LoginController@index');
     $router->post('login','LoginController@login');
 
     $router->post('logout','LoginController@logout');
