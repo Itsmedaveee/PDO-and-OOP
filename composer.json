@@ -1,0 +1,17 @@
+{
+	"autoload": {
+		"classmap" : [
+			"app/controllers",
+            "app/models",
+            "core"
+		],
+        "files": [
+            "core/helpers.php"
+        ],
+        "psr-4": {
+        }
+	},
+	"require": {
+		"illuminate/database": "^5.3"
+	}
+}
